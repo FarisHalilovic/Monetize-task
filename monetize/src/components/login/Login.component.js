@@ -1,7 +1,7 @@
 // LoginComponent.js
 import React, { useState } from "react";
 import api from "../../services/Api.service";
-import { Link } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 
 import MonetizeImage from "../../assets/monetize.jpg"; // Adjust the path as needed
 import "./Login.component.css";
@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 function LoginComponent() {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     username: "",
     password: "",
@@ -56,7 +57,6 @@ function LoginComponent() {
     }
 
     try {
-      debugger;
       // Call the login API method
       const response = await api.login({
         username: state.username,
@@ -74,6 +74,7 @@ function LoginComponent() {
           password: "",
           general: "",
         });
+        navigate('/');
         window.location.reload();
         // Redirect or perform any other actions upon successful login
       } else {

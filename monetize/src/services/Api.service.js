@@ -28,13 +28,12 @@ const getAuthToken = () => {
 const api = {
   login: (credentials) => apiService.post('login/', credentials),
   register: (userData) => apiService.post('register/', userData),
-  fetchData: () => apiService.get('/data'),
-  fetchDataWithToken: () => {
+  getProductsData: () => {
     // Set the token for this specific request
     const token = getAuthToken();
     setAuthToken(token);
 
-    return apiService.get('/data-with-token');
+    return apiService.get('products/');
   },
 };
 

@@ -1,10 +1,11 @@
 // src/components/Navbar.js
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import "./NavBar.component.css";
 
 const Navbar = ({ isUserLoggedIn }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     // Clear local storage, remove token, and reload page
@@ -18,17 +19,37 @@ const Navbar = ({ isUserLoggedIn }) => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
+        // Split the token into parts
+        const tokenParts = token.split('.');
+        
+        // Ensure there are exactly three parts
+        if (tokenParts.length !== 3) {
+          console.error("Invalid token format");
+          return null;
+        }
+    
         // Parse the token to get user information
-        const decodedToken = JSON.parse(atob(token.split('.')[1]));
-        return {
-          username: decodedToken.username,
-          userId: decodedToken.id,
-        };
+        const decodedToken = JSON.parse(atob(tokenParts[1]));
+    
+        // Check if the required properties exist in the decoded token
+        if (decodedToken && decodedToken.username && decodedToken.id) {
+          return {
+            username: decodedToken.username,
+            userId: decodedToken.id,
+          };
+        } else {
+          console.error("Invalid token content");
+          return null;
+        }
       } catch (error) {
-        console.error("Error decoding token:", error);
+        console.error("Error decoding token:", error.message);
         return null;
       }
+    } else {
+      console.error("Token is missing");
+      return null;
     }
+    
     return null;
   };
 
@@ -38,27 +59,26 @@ const Navbar = ({ isUserLoggedIn }) => {
   return (
     <nav>
       <ul>
-       
-        <li>
+        <li className={location.pathname === '/' ? 'active' : ''}>
           <Link to="/">Home</Link>
         </li>
         {isUserLoggedIn ? (
           <>
-            <li>
+            <li className={location.pathname === '/products' ? 'active' : ''}>
               <Link to="/products">Products</Link>
             </li>
             <li className="user-info">
               {/* Display username and id if available */}
               {userInfo && (
                 <span>
-                 Username: {userInfo.username} (ID: {userInfo.userId})
+                  Username: {userInfo.username} (ID: {userInfo.userId})
                 </span>
               )}
-              <button onClick={handleLogout}>Logout</button>
             </li>
+            <button className='logout-button' onClick={handleLogout}>Logout</button>
           </>
         ) : (
-          <li>
+          <li className={location.pathname === '/login' ? 'active' : ''}>
             <Link to="/login">Login</Link>
           </li>
         )}
