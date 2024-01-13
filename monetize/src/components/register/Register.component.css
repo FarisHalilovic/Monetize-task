@@ -1,0 +1,51 @@
+
+/* src/components/register/Register.css */
+
+/* Container style */
+.register-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Form styles */
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px; /* Adjust the width as needed */
+  }
+  
+  /* Label styles */
+  label {
+    margin-top: 5px;
+  }
+  
+  /* Input styles */
+  input, select {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Button styles */
+  button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Error message styles */
+  .error-message {
+    color: red;
+  }
+  
+  .gender-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
