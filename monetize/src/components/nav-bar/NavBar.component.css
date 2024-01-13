@@ -1,0 +1,40 @@
+/* src/components/NavBar.component.css */
+
+nav {
+  background-color: #88C544;
+  padding: 15px;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li {
+  font-size: 25px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+button {
+  font-size: 15px;
+  border: 2px solid white;
+}
+
+/* Set the logout button to the end (right side) */
+.logout-button {
+  margin-left: auto;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
