@@ -1,4 +1,4 @@
-This README file provides step-by-step information on the changes made to the project, including the implementation of a responsive Navbar and modifications to the Login component.
+This README file provides step-by-step information on the changes made to the project.
 
 <b>1. Navbar Component</b>
 
