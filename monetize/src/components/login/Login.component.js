@@ -1,9 +1,9 @@
 // LoginComponent.js
 import React, { useState } from "react";
 import api from "../../services/Api.service";
-import { Link,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import MonetizeImage from "../../assets/monetize.jpg"; // Adjust the path as needed
+import MonetizeImage from "../../assets/monetize.jpg"; 
 import "./Login.component.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -22,7 +22,7 @@ function LoginComponent() {
   const [errors, setErrors] = React.useState({
     username: "",
     password: "",
-    general: "", // General error message
+    general: "", 
   });
 
   const handleChange = (evt) => {
@@ -33,8 +33,8 @@ function LoginComponent() {
     });
     setErrors({
       ...errors,
-      [name]: "", // Clear the error when the user starts typing
-      general: "", // Clear general error when user interacts with the form
+      [name]: "", 
+      general: "", 
     });
   };
 
@@ -51,7 +51,7 @@ function LoginComponent() {
       setErrors({
         username: usernameError,
         password: passwordError,
-        general: "", // Clear general error if there are specific field errors
+        general: "", 
       });
       return;
     }
@@ -63,30 +63,29 @@ function LoginComponent() {
         password: state.password,
       });
 
-      // Check if login was successful
+      
       if (response.status === 200) {
-        // Set the token to local storage
+        
         localStorage.setItem("token", response.data.jwt);
 
-        // Clear errors on successful login
+        
         setErrors({
           username: "",
           password: "",
           general: "",
         });
-        navigate('/');
+        navigate("/");
         window.location.reload();
-        // Redirect or perform any other actions upon successful login
+        
       } else {
-        // If the login is not successful, display an error message
+        
         setErrors({
           ...errors,
           general: response.message || "An error occurred during login.",
         });
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      // Handle unexpected errors here
+      
       setErrors({
         ...errors,
         general: "An unexpected error occurred during login.",
@@ -135,10 +134,12 @@ function LoginComponent() {
             onChange={handleChange}
           />
           <span className="error">{errors.password}</span>
-          <button type="submit">Sign In</button>
+          <button className="primary-button" type="submit">
+            Sign In
+          </button>
           <p>Do not have an account?</p>
           <Link to="/register">
-            <button>Sign Up</button>
+            <button className="primary-button">Sign Up</button>
           </Link>
           {errors.general && <span className="error">{errors.general}</span>}
         </form>
@@ -146,18 +147,35 @@ function LoginComponent() {
 
       <div className="right-side">
         <div className="centered-content">
-          {/* Image */}
+          
           <img className="logo-image" src={MonetizeImage} alt="Your Alt Text" />
 
-          {/* Social media buttons */}
+         
           <div className="social-container">
-            <a href="#" className="social">
+            <a
+              href="https://www.facebook.com/monetizead?mibextid=LQQJ4d"
+              className="social"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FontAwesomeIcon icon={faFacebookF} />
             </a>
-            <a href="#" className="social">
+
+            <a
+              href="https://monetizead.com/"
+              className="social"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FontAwesomeIcon icon={faGooglePlusG} />
             </a>
-            <a href="#" className="social">
+
+            <a
+              href="https://www.linkedin.com/company/monetize-ad/"
+              className="social"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
           </div>

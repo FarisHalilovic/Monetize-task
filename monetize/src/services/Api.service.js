@@ -1,7 +1,7 @@
 // apiService.js
 import axios from 'axios';
 
-const BASE_URL = 'https://junior-test.mntzdevs.com/api/'; // Replace with your API base URL
+const BASE_URL = 'https://junior-test.mntzdevs.com/api/'; 
 
 const apiService = axios.create({
   baseURL: BASE_URL,

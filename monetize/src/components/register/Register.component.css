@@ -1,27 +1,27 @@
 
 /* src/components/register/Register.css */
 
-/* Container style */
+
 .register-page {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  /* Form styles */
+  
   .register-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px; /* Adjust the width as needed */
+    width: 300px; 
   }
   
-  /* Label styles */
+  
   label {
     margin-top: 5px;
   }
   
-  /* Input styles */
+  
   input, select {
     padding: 8px;
     margin-bottom: 10px;
@@ -29,8 +29,8 @@
     box-sizing: border-box;
   }
   
-  /* Button styles */
-  button {
+ 
+  .register-button {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
@@ -39,7 +39,7 @@
     width: 100%;
   }
   
-  /* Error message styles */
+  
   .error-message {
     color: red;
   }
@@ -48,4 +48,36 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    gap: 10px;
+  }
+
+  .register-logo-image {
+    width: 400px;
+    border-radius: 10px;
+  }
+
+  .register-right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+  }
+
+  .gender-radio{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .register-logo-image {
+      width: 100%;
+      height: 200px;
+   
+    }
+
+    .register-right-side {
+      margin-top: 300px; 
+    }
   }

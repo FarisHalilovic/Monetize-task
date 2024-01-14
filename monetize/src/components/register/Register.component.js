@@ -1,7 +1,7 @@
 // src/components/register/Register.component.js
 import React, { useState } from "react";
 import { useNavigate} from 'react-router-dom'
-import "./Register.component.css"; // Import your CSS file
+import "./Register.component.css"; 
 import api from "../../services/Api.service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,7 +10,8 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 
-import MonetizeImage from "../../assets/register.jpg"; // Adjust the path as needed
+import MonetizeImage from "../../assets/register.jpg"; 
+// Function for registration
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ const Register = () => {
           });
           if (loginResponse.status === 200) {
             localStorage.setItem("token", loginResponse.data.jwt);
-            // Clear errors on successful login
+            
             setErrors({});
             navigate('/');
             window.location.reload();
@@ -67,7 +68,7 @@ const Register = () => {
             });
           }
         } else {
-          // If the login is not successful, display an error message
+          
           setErrors({
             ...errors,
             general:
@@ -82,7 +83,6 @@ const Register = () => {
             error.response.data.message ||
             "An error occurred during registration.",
         });
-        console.error("Registration or login failed:", error);
       }
     } else {
       // Form is invalid, update the errors state
@@ -93,8 +93,8 @@ const Register = () => {
   const validateForm = (data) => {
     const errors = {};
 
-    // Validation logic goes here
-    // Example: Validate username
+    // Validation of registration
+    
     if (!data.username.trim()) {
       errors.username = "Username is required";
     } else if (data.username.length < 3 || data.username.length > 20) {
@@ -205,7 +205,7 @@ const Register = () => {
 
           <label>Gender</label>
           <div className="gender-group">
-            <div>
+            <div className="gender-radio">
               <input
                 type="radio"
                 id="male"
@@ -216,7 +216,7 @@ const Register = () => {
               />
               <label htmlFor="male">Male</label>
             </div>
-            <div>
+            <div className="gender-radio">
               <input
                 type="radio"
                 id="female"
@@ -227,7 +227,7 @@ const Register = () => {
               />
               <label htmlFor="female">Female</label>
             </div>
-            <div>
+            <div className="gender-radio">
               <input
                 type="radio"
                 id="other"
@@ -256,27 +256,44 @@ const Register = () => {
             <div className="error-message">{errors.subscribeToNewsLetter}</div>
           )}
 
-          <button type="submit">Register</button>
+          <button className="register-button" type="submit">Register</button>
           {errors.general && (
             <div className="error-message">{errors.general}</div>
           )}
         </form>
       </div>
 
-      <div className="right-side">
+      <div className="register-right-side">
         <div className="centered-content">
-          {/* Image */}
-          <img className="logo-image" src={MonetizeImage} alt="Your Alt Text" />
+          
+          <img className="register-logo-image" src={MonetizeImage} alt="Your Alt Text" />
 
-          {/* Social media buttons */}
+          
           <div className="social-container">
-            <a href="#" className="social">
+          <a
+              href="https://www.facebook.com/monetizead?mibextid=LQQJ4d"
+              className="social"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FontAwesomeIcon icon={faFacebookF} />
             </a>
-            <a href="#" className="social">
+
+            <a
+              href="https://monetizead.com/"
+              className="social"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FontAwesomeIcon icon={faGooglePlusG} />
             </a>
-            <a href="#" className="social">
+
+            <a
+              href="https://www.linkedin.com/company/monetize-ad/"
+              className="social"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
           </div>
