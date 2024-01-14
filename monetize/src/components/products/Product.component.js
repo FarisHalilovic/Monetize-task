@@ -37,11 +37,12 @@ const ProductComponent = () => {
     const filtered = products.filter(
       (product) =>
         product.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
-        (priceFilter === "" || product.price <= parseInt(priceFilter))
+        (priceFilter === "" || product.price == parseInt(priceFilter))
     );
     setFilteredProducts(filtered);
-    setCurrentPage(0); 
+    setCurrentPage(0);
   };
+  
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
