@@ -46,13 +46,13 @@ The corresponding CSS file (src/components/Product.component.css) has been updat
 How to Run the Project?
 Follow these steps to run the project locally:
 
-1. Clone the repository to your local machine.
-git clone <repository-url>
+1. Clone the repository to your local machine:
+git clone (repository-url)
 
-2. Install dependencies.
+2. Install dependencies:
 npm install
 
-3. Start the development server.
+3. Start the development server:
 npm start
 
 Visit http://localhost:3000 in your browser to view the application.
@@ -61,4 +61,4 @@ Additional Notes:
 Ensure you have Node.js and npm installed on your machine.
 
 
-
+Enjoy the project!
