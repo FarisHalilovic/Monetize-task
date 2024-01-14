@@ -24,7 +24,6 @@ const Navbar = ({ isUserLoggedIn }) => {
         
         // Ensure there are exactly three parts
         if (tokenParts.length !== 3) {
-          console.error("Invalid token format");
           return null;
         }
     
@@ -38,15 +37,12 @@ const Navbar = ({ isUserLoggedIn }) => {
             userId: decodedToken.id,
           };
         } else {
-          console.error("Invalid token content");
           return null;
         }
       } catch (error) {
-        console.error("Error decoding token:", error.message);
         return null;
       }
     } else {
-      console.error("Token is missing");
       return null;
     }
     
@@ -58,7 +54,7 @@ const Navbar = ({ isUserLoggedIn }) => {
 
   return (
     <nav>
-      <ul>
+      <ul className='nav-elements'>
         <li className={location.pathname === '/' ? 'active' : ''}>
           <Link to="/">Home</Link>
         </li>
